@@ -22,9 +22,10 @@
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const port=process.env.PORT||3001;
 
 conn.sync({ force:false }).then(() => {      // force: false ----> para que no me borre todos los datos de la BD
-  server.listen(3001, () => {
+  server.listen(port, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
