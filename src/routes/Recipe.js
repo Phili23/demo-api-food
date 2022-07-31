@@ -8,12 +8,10 @@ const { API_KEY } = process.env;
 const {axios}=require('axios')
 
 const router = Router();
-//https://api.spoonacular.com/recipes/complexSearch?apiKey=4b9c91bbd1c0491085c2f4c51165d6be&addRecipeInformation=true
-//https://api.spoonacular.com/recipes/complexSearch?query=${name}&addRecipeInformation=true&number=10&apiKey=${API_KEY}
 const getApiByName = async (name) => {
            
     try{
-        const resAxios = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=4b9c91bbd1c0491085c2f4c51165d6be&addRecipeInformation=true`);
+        const resAxios = await axios.get(`${URL}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`);
         const { results } = resAxios.data;
         if(results.length > 0){
             let response = results?.map((el) => {
